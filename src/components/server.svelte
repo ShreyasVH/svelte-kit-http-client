@@ -23,6 +23,8 @@
         b: 'B'
     };
 
+    let mounted = false;
+
     onMount(async () => {
         const getResponse = await get(urls.get);
         const postResponse = await post(urls.post, payload);
@@ -35,37 +37,41 @@
             put: JSON.stringify(putResponse.data),
             delete: JSON.stringify(deleteResponse.data)
         };
+
+        mounted = true;
     });
 
 </script>
 
 <div>
     <div>
-        <div>
-            {#each Object.keys(urls) as type}
-            <div>
-                <p>
-                    <b>
-                        URL:
-                    </b>
-                    &nbsp;
-                    <span>
-                        {urls[type]}
-                    </span>
-                </p>
+        {#if mounted}
+            <section class="server">
+                {#each Object.keys(urls) as type}
+                    <section class="verb">
+                        <p>
+                            <b>
+                                URL:
+                            </b>
+                            &nbsp;
+                            <span>
+                                {urls[type]}
+                            </span>
+                        </p>
 
-                <p>
-                    <b>
-                        Response:
-                    </b>
-                    &nbsp;
-                    <span>
-                      {data[type]}
-                  </span>
-                </p>
-            </div>
-            {/each}
-        </div>
+                        <p>
+                            <b>
+                                Response:
+                            </b>
+                            &nbsp;
+                            <span>
+                              {data[type]}
+                          </span>
+                        </p>
+                    </section>
+                {/each}
+            </section>
+        {/if}
     </div>
 </div>
 
