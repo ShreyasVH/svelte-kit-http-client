@@ -46,9 +46,9 @@
 <div>
     <div>
         {#if mounted}
-            <section class="server">
+            <section class="server" data-class="server">
                 {#each Object.keys(urls) as type}
-                    <section class="verb">
+                    <section class="verb" data-class="verb">
                         <p>
                             <b>
                                 URL:
