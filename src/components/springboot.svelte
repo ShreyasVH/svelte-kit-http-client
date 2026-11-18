@@ -1,5 +1,5 @@
 <script>
-    import Server from './server.svelte';
+    import Server from './common.svelte';
 </script>
 
 <Server endpoint="https://cors.springboot.com" />
